@@ -1,189 +1,300 @@
 import * as React from "react"
+import  '../pages/index.css';
 import type { HeadFC, PageProps } from "gatsby"
+import { Avatar, Button, Card, CardContent, Container, Divider, Grid, List, ListItem, ListItemAvatar, ListItemButton, ListItemText, Paper, Typography } from "@mui/material";
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const doclistStyles = {
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
+// STYLES
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
+const headerStyles = {
+  height: '100px',
+  justifyContent: 'center',
+  alignItems: 'center',
+  textAlign: 'center',
+  borderBottom: '1px solid black',
+  fontFamily: 'Times New Roman',
+  position: 'sticky',
+  top: '0px',
+};
 
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  display: `inline-block`,
-  marginBottom: 24,
-  marginRight: 12,
-}
+const sectionStyle = {
+  top: '100px',
+  height: '80vh',
+  padding: '60px',
+};
 
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
+const subHeaderStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+};
 
-const docLinks = [
-  {
-    text: "TypeScript Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/",
-    color: "#8954A8",
-  },
-  {
-    text: "GraphQL Typegen Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/",
-    color: "#8954A8",
+const sectionContent = {
+  width: '80%',
+  margin: 'auto',
+  marginTop: '60px',
+};
+
+// UTILS
+
+const scrollToElement = (elementId: string): void => {
+  const element = document.getElementById(elementId);
+
+  if (element) {
+      element.scrollIntoView({ behavior: 'smooth'});
   }
-]
+};
 
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
+// COMPONENTS
 
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
+const Header = () => {
+  return (
+    <Grid container sx={headerStyles}>
+      <Grid item xs={6}>
+        <Typography variant="h2">
+          Mansi Jain
+        </Typography>
+      </Grid>
+      {/* Create hamburger for smaller screens */}
+      <Grid item xs={2}>
+        <Button className="button" variant="outlined" onClick={() => scrollToElement('about')}>
+          <Typography>
+            About Me
+          </Typography>
+          </Button>
+      </Grid>
+      <Grid item xs={2}>
+        <Button className="button" variant="outlined" onClick={() => scrollToElement('experience')}>
+            <Typography>
+              Experience
+            </Typography>
+          </Button>
+      </Grid>
+      <Grid item xs={2}>
+        <Button className="button" variant="outlined" onClick={() => scrollToElement('contact')}>
+          <Typography>
+            Contact
+          </Typography>
+          </Button>
+      </Grid>
+    </Grid>
+  );
+};
+
+const About = () => {
+  return (
+    <div id="about" style={sectionStyle}>
+      <Typography className="text" variant="h3" sx={subHeaderStyle}>
+        Who Am I?
+      </Typography>
+      <Grid container sx={sectionContent}>
+        <Grid item xs={5}>
+          <img src="https://placekitten.com/300/300" style={{borderRadius: '50%'}} />
+        </Grid>
+        <Grid item xs={7}>
+          <Typography>
+          Hi, I’m Mansi!
+          </Typography>
+          <Typography>
+          I’m a Software Engineer at Vistaprint in the Greater Boston Area. Hailing from Mumbai, India,
+          I moved to the United States to pursue my Masters in Computer Science from
+          Northeastern University and have been here since.
+          </Typography>
+          <Typography>
+          Passionate about building accessible, enriching, user friendly applications, mostly web.
+          When not coding, I like to alternate reading thriller novels and self improvement books,
+          sign up and train for a race (next is Boston R2R 5 miler) , try to cook new vegan recipes
+          or watch old sappy Bollywod movies.
+          </Typography>
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
+
+const Experience = () => {
+  return (
+    <div id="experience" style={sectionStyle}>
+      <Typography variant="h3" sx={subHeaderStyle}>
+        Where did I work?
+      </Typography>
+      <Grid container sx={sectionContent}>
+        <Grid item xs={6}>
+          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="Vistaprint" src="/static/images/avatar/1.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              primary="Software Engineer"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    Vistaprint
+                  </Typography>
+                  {" August 2020 - Present"}
+                  <Typography color="text.primary">
+                    Skills: React JS, Node JS, Typscript, C#, SQL, AWS, CI/CD
+                  </Typography>
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="Schlumberger" src="/static/images/avatar/2.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              primary="Software Developer"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    Schlumberger
+                  </Typography>
+                  {" August 2019 - December 2019"}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="Vistaprint" src="/static/images/avatar/3.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              primary="Software Engineer Intern"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    Vistaprint
+                  </Typography>
+                  {' June 2019 - August 2019'}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+        </List>
+        </Grid>
+        <Grid item xs={6}>
+          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="Northeastern" src="/static/images/avatar/1.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              primary="Research Assitant"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    Northeaster University
+                  </Typography>
+                  {" April 2020 - September 2020"}
+                  <Typography color="text.primary">
+                    Test Text
+                  </Typography>
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="Air India" src="/static/images/avatar/2.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              primary="Summer Trainee"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    Air India
+                  </Typography>
+                  {" May 2016 - July 2016"}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+            </ListItemAvatar>
+            <ListItemText
+              primary="Oui Oui"
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    sx={{ display: 'inline' }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
+                  >
+                    Sandra Adams
+                  </Typography>
+                  {' — Do you have Paris recommendations? Have you ever…'}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+        </List>
+        </Grid>
+    </Grid>
+    </div>
+  );
+};
+
+const Contact = () => {
+  return (
+    <div id="contact" style={sectionStyle}>
+      <Typography variant="h3" sx={subHeaderStyle}>
+        How can you reach me?
+      </Typography>
+    </div>
+  );
+};
+
+const Footer = () => {
+  return (
+    <></>
+  );
+};
 
 const IndexPage: React.FC<PageProps> = () => {
+
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Hi, I'm Mansi!
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={doclistStyles}>
-        {docLinks.map(doc => (
-          <li key={doc.url} style={docLinkStyle}>
-            <a
-              style={linkStyle}
-              href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
-            >
-              {doc.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <ul style={listStyles}>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-    </main>
+    <div className="home">
+      <Header></Header>
+      <About></About>
+      <Experience></Experience>
+      <Contact></Contact>
+      <Footer></Footer>
+    </div>
   )
 }
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>Mansi Jain</title>

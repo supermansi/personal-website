@@ -1,0 +1,29 @@
+.MuiTypography-root {
+    font-family: 'Garamond', serif !important;
+    color: #7D6E83;
+};
+
+.MuiListItem-root {
+    padding: '24px';
+}
+
+.home {
+    background-color: #F8EDE3;
+}
+
+body {
+    margin: 0px;
+}
+
+.button {
+    border-color: #7D6E83;
+}
+
+.button:hover {
+    border-color: #7D6E83;
+    background-color: #7D6E83;
+
+    .MuiTypography-root {
+        color: #F8EDE3;
+    }
+}
